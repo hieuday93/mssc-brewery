@@ -10,7 +10,7 @@ public class BeerServiceImpl implements BeerService {
     @Override
     public BeerDto getBeerById(UUID beerId) {
         return BeerDto.builder()
-                .id(UUID.randomUUID())
+                .id(beerId)
                 .beerName("Galaxy Cat")
                 .beerStyle("Pale Ale")
                 .build();
