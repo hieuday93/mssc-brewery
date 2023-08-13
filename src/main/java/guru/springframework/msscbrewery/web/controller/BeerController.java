@@ -5,6 +5,7 @@ import guru.springframework.msscbrewery.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +43,13 @@ public class BeerController {
         beerDto.setId(beerId);
         beerService.updateBeer(beerDto);
         return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{beerId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBeer(@PathVariable UUID beerId) {
+        log.info("HTTP DELETE /api/v1/beer/{}", beerId);
+        beerService.deleteBeer(beerId);
     }
 
 }
